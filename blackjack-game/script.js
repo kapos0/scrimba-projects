@@ -110,6 +110,15 @@ function displayCards(hand, container, hideFirst = false) {
     }
 }
 
+function updateTotals() {
+    playerTotalSpan.textContent = calculateTotal(playerHand);
+    if (dealerRevealed) {
+        dealerTotalSpan.textContent = calculateTotal(dealerHand);
+    } else {
+        dealerTotalSpan.textContent = getCardValue(dealerHand[1]);
+    }
+}
+
 function startGame() {
     const bet = parseInt(betAmountInput.value);
 
@@ -222,6 +231,25 @@ function endGame(result, message) {
     balanceSpan.textContent = balance;
     dealBtn.disabled = false;
     betAmountInput.disabled = false;
+}
+
+function newGame() {
+    if (balance <= 0) {
+        balance = 1000;
+        balanceSpan.textContent = balance;
+        statusMessageDiv.textContent = "Game Over! Balance Reset to $1000";
+        statusMessageDiv.className = "status-message";
+    }
+    dealBtn.disabled = false;
+    betAmountInput.disabled = false;
+    hitBtn.disabled = true;
+    standBtn.disabled = true;
+    playerCardsDiv.innerHTML = "";
+    dealerCardsDiv.innerHTML = "";
+    playerTotalSpan.textContent = "0";
+    dealerTotalSpan.textContent = "0";
+    statusMessageDiv.textContent = "";
+    statusMessageDiv.className = "status-message";
 }
 
 dealBtn.addEventListener("click", startGame);
