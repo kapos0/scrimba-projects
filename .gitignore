@@ -1,0 +1,12 @@
+/public
+/dist
+/node_modules
+/.env
+.DS_Store
+/logs
+*.log
+*.tmp
+.idea/
+.vscode/
+*.bak
+*.swp
