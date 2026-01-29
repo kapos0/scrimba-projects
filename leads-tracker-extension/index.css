@@ -8,14 +8,16 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background: white;
     padding: 0;
-    width: 600px;
+    width: 400px;
+    min-width: 350px;
+    margin: 0;
 }
 
 .container {
     background: white;
-    border-radius: 8px;
-    padding: 18px;
+    padding: 16px;
     width: 100%;
+    min-height: 400px;
     max-height: 600px;
     overflow-y: auto;
     display: flex;
@@ -39,11 +41,11 @@ h1 {
 
 input {
     flex: 1;
-    min-width: 200px;
-    padding: 12px;
+    min-width: 150px;
+    padding: 10px;
     border: 2px solid #e0e0e0;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 13px;
     transition: border-color 0.3s;
 }
 
@@ -54,7 +56,7 @@ input:focus {
 }
 
 button {
-    padding: 10px 14px;
+    padding: 10px 12px;
     background: #5f9341;
     color: white;
     border: none;
@@ -62,8 +64,9 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    font-size: 13px;
+    font-size: 11px;
     white-space: nowrap;
+    min-width: fit-content;
 }
 
 button:hover {
@@ -206,7 +209,6 @@ ul {
 
 /* Modal Styles */
 .modal {
-    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -216,6 +218,7 @@ ul {
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    overflow-y: auto;
 }
 
 .modal.hidden {
@@ -227,7 +230,8 @@ ul {
     border-radius: 10px;
     padding: 20px;
     width: 90%;
-    max-width: 400px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin: 10px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -276,4 +280,12 @@ ul {
 
 .cancel-btn:hover {
     background: #777;
+}
+
+.icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    color: white;
 }

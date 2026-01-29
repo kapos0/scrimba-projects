@@ -96,8 +96,8 @@ function render(leads) {
         listItems += `
                 </div>
                 <div class="lead-actions">
-                    <button class="edit-btn" data-index="${i}">✎</button>
-                    <button class="delete-btn" data-index="${i}">×</button>
+                    <button class="edit-btn" data-index="${i}"><img src="./edit-text.png" alt="Edit" class="icon"/></button>
+                    <button class="delete-btn" data-index="${i}"><img src="./clear.png" alt="Delete" class="icon"/></button>
                 </div>
             </li>
         `;
