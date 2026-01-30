@@ -1,5 +1,7 @@
 let myLeads = [];
 let editingIndex = null;
+let selectedColor = "white";
+let editSelectedColor = "white";
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("ul-el");
@@ -7,6 +9,8 @@ const deleteBtn = document.getElementById("delete-btn");
 const tabBtn = document.getElementById("tab-btn");
 const noteEl = document.getElementById("note-el");
 const noteBtn = document.getElementById("note-btn");
+const colorPicker = document.getElementById("color-picker");
+const editColorPicker = document.getElementById("edit-color-picker");
 const editModal = document.getElementById("edit-modal");
 const editUrlInput = document.getElementById("edit-url");
 const editNoteInput = document.getElementById("edit-note");
@@ -23,9 +27,46 @@ const browserAPI =
           : null;
 
 if (leadsFromLocalStorage) {
-    myLeads = leadsFromLocalStorage;
+    myLeads = leadsFromLocalStorage.map((lead) => {
+        if (typeof lead === "string") {
+            return { url: lead, notes: "", color: "white" };
+        }
+        return {
+            url: lead.url || "",
+            notes: lead.notes || "",
+            color: lead.color || "white",
+        };
+    });
     render(myLeads);
 }
+
+function setSelectedColor(container, color) {
+    const chips = container.querySelectorAll(".color-chip");
+    chips.forEach((chip) => {
+        chip.classList.toggle("selected", chip.dataset.color === color);
+    });
+}
+
+function initColorPicker(container, onSelect, initialColor) {
+    if (!container) return;
+
+    setSelectedColor(container, initialColor);
+    container.querySelectorAll(".color-chip").forEach((chip) => {
+        chip.addEventListener("click", function () {
+            const color = this.dataset.color;
+            onSelect(color);
+            setSelectedColor(container, color);
+        });
+    });
+}
+
+initColorPicker(
+    colorPicker,
+    (color) => {
+        selectedColor = color;
+    },
+    selectedColor,
+);
 
 tabBtn.addEventListener("click", function () {
     if (!browserAPI) {
@@ -42,6 +83,7 @@ tabBtn.addEventListener("click", function () {
                 myLeads.push({
                     url: tabs[0].url,
                     notes: note,
+                    color: selectedColor,
                 });
                 noteEl.value = "";
                 localStorage.setItem("myLeads", JSON.stringify(myLeads));
@@ -56,6 +98,7 @@ noteBtn.addEventListener("click", function () {
         myLeads.push({
             url: "",
             notes: noteEl.value,
+            color: selectedColor,
         });
         noteEl.value = "";
         localStorage.setItem("myLeads", JSON.stringify(myLeads));
@@ -69,9 +112,11 @@ function render(leads) {
         const lead = leads[i];
         const url = typeof lead === "string" ? lead : lead.url || "";
         const notes = typeof lead === "string" ? "" : lead.notes || "";
+        const color =
+            typeof lead === "string" ? "white" : lead.color || "white";
 
         listItems += `
-            <li class="lead-item">
+            <li class="lead-item color-${color}">
                 <div class="lead-content" data-index="${i}">
         `;
 
@@ -129,9 +174,12 @@ function openEditModal(index) {
     const lead = myLeads[index];
     const url = typeof lead === "string" ? lead : lead.url || "";
     const notes = typeof lead === "string" ? "" : lead.notes || "";
+    const color = typeof lead === "string" ? "white" : lead.color || "white";
 
     editUrlInput.value = url;
     editNoteInput.value = notes;
+    editSelectedColor = color;
+    setSelectedColor(editColorPicker, editSelectedColor);
     editModal.classList.remove("hidden");
     editUrlInput.focus();
 }
@@ -141,6 +189,7 @@ function closeEditModal() {
     editingIndex = null;
     editUrlInput.value = "";
     editNoteInput.value = "";
+    editSelectedColor = "white";
 }
 
 deleteBtn.addEventListener("dblclick", function () {
@@ -155,6 +204,7 @@ inputBtn.addEventListener("click", function () {
         myLeads.push({
             url: inputEl.value,
             notes: note,
+            color: selectedColor,
         });
         inputEl.value = "";
         noteEl.value = "";
@@ -162,6 +212,14 @@ inputBtn.addEventListener("click", function () {
         render(myLeads);
     }
 });
+
+initColorPicker(
+    editColorPicker,
+    (color) => {
+        editSelectedColor = color;
+    },
+    editSelectedColor,
+);
 
 // Edit modal event listeners
 saveEditBtn.addEventListener("click", function () {
@@ -173,6 +231,7 @@ saveEditBtn.addEventListener("click", function () {
             myLeads[editingIndex] = {
                 url: url,
                 notes: notes,
+                color: editSelectedColor,
             };
             localStorage.setItem("myLeads", JSON.stringify(myLeads));
             render(myLeads);
