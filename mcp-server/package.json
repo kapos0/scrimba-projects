@@ -1,0 +1,25 @@
+{
+    "name": "mcp-server",
+    "version": "1.0.0",
+    "description": "First mcp server try",
+    "main": "server.ts",
+    "scripts": {
+        "start": "tsx server.ts"
+    },
+    "keywords": [
+        "mcp",
+        "typescript",
+        "ai",
+        "llm"
+    ],
+    "author": "Mehmet Enes Turhan",
+    "license": "MIT",
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.26.0",
+        "zod": "^4.3.6"
+    },
+    "devDependencies": {
+        "@types/node": "^25.2.3",
+        "typescript": "^5.9.3"
+    }
+}

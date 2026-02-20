@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>find-the-art</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Find the Art 👩‍🎨</h1>
+            <div id="output-img" class="frame">
+                <h2>
+                    Describe a famous painting without saying its name or the
+                    artist!
+                </h2>
+            </div>
+            <textarea
+                placeholder="Revise or refine your description here..."
+                id="revised-input"
+            ></textarea>
+            <textarea
+                placeholder="A woman with long brown hair..."
+                id="instruction"
+            ></textarea>
+            <button id="submit-btn">Create</button>
+        </div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>
