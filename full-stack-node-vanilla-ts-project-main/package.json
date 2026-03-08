@@ -1,0 +1,50 @@
+{
+    "name": "my-full-stack-node-vanilla-ts-project",
+    "version": "1.0.0",
+    "description": "A full stack sas app with node express",
+    "type": "module",
+    "main": "dist/server.js",
+    "scripts": {
+        "dev": "tsx watch src/server.ts",
+        "build": "tsc",
+        "start": "node dist/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kapos0/scrimba-projects.git"
+    },
+    "keywords": [
+        "express",
+        "javascript",
+        "typescript",
+        "sqlite",
+        "html",
+        "css",
+        "bootstrap"
+    ],
+    "author": "Mehmet Enes Turhan",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kapos0/scrimba-projects/issues"
+    },
+    "homepage": "https://github.com/kapos0/scrimba-projects#readme",
+    "dependencies": {
+        "bcryptjs": "^3.0.3",
+        "dompurify": "^3.3.1",
+        "dotenv": "^17.3.1",
+        "express": "^5.2.1",
+        "express-session": "^1.19.0",
+        "marked": "^17.0.3",
+        "openai": "^6.25.0",
+        "sqlite": "^5.1.1",
+        "sqlite3": "^5.1.7",
+        "validator": "^13.15.26"
+    },
+    "devDependencies": {
+        "@types/express": "^5.0.6",
+        "@types/node": "^25.3.3",
+        "ts-node": "^10.9.2",
+        "tsx": "^4.21.0",
+        "typescript": "^5.9.3"
+    }
+}

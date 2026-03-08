@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Habit & Note Tracker - index page" />
+    <link rel="shortcut icon" href="./assets/focus.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
+    <title>Focus</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="logo-container">
+            <h1 class="logo">Focus</h1>
+        </div>
+        <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#addHabitModal">
+            + Add Habit
+        </button>
+        <div class="links-container">
+            <ul class="nav-links">
+                <li><a href="/index.html">Home</a></li>
+                <li class="selected"><a href="/habits.html">Habits</a></li>
+                <li><a href="/notes.html">Notes</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="container py-5">
+            <div class="card bg-secondary text-light mb-4 border-0 shadow">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="mb-0">My Habits</h4>
+                        <span class="badge bg-warning text-dark">0 Active</span>
+                    </div>
+
+                    <div class="row g-4">
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-success btn-sm w-100">
+                                        ✔ Mark as Done
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm w-100">
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card bg-secondary text-light">
+                <div class="card-body">
+                    <h4 class="mb-3">Recent Activity</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-secondary text-light border-light">
+                            ✅ there is not recent activity
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADD HABIT MODAL -->
+        <div class="modal fade" id="addHabitModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content bg-secondary text-light">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add New Habit</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label class="form-label">Habit Name</label>
+                                <input type="text" class="form-control" placeholder="e.g. Read 30 pages" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Frequency</label>
+                                <select class="form-select">
+                                    <option>Daily</option>
+                                    <option>Weekly</option>
+                                    <option>Monthly</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <input type="text" class="form-control" placeholder="Why is this important?" />
+                            </div>
+
+                            <button type="submit" class="btn btn-warning text-dark w-100 fw-semibold">
+                                Create Habit
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+    crossorigin="anonymous"></script>
+
+</html>
